@@ -8,20 +8,13 @@ python>=3.6
 pytorch>=0.4
 
 ## Run
-dataset+model: fmnist+lenet, cifar+lenet, cifar+vgg<br>
+cifar+lenet, cifar+vgg<br>
 $\alpha=[0.5, 0.9, 2.0]$ for each group of dataset+model
 
-Local:
-> python [main_local.py](main_local.py) --dataset fmnist --model lenet --epochs 100 --gpu 0 --num_users 100 --alpha 0.5
 
 FedAvg: 
 > python [main_fed.py](main_fed.py) --dataset fmnist --model lenet --epochs 1000 --gpu 0 --lr 0.01 --num_users 100 --frac 0.1 --alpha 0.5
 
-PFL-FB + PFL-MF:
-> python [main_gate.py](main_gate.py) --dataset fmnist --model lenet --epochs 200 --num_users 100 --gpu 1 --alpha 0.5
-
-PFL-FB + PFL-MFE:
-> python [main_gate.py](main_gate.py) --dataset fmnist --model lenet --epochs 200 --num_users 100 --gpu 1 --alpha 0.5 --struct
 
 See the arguments in [options.py](utils/options.py). 
 ## Results
@@ -34,28 +27,18 @@ Table 1. The average value of **local test** accuracy of all clients in three ba
    <tr>
       <td></td>
       <td>non-IID</td>
-      <td>Local(%)</td>
+
       <td>FedAvg(%)</td>
-      <td>PFL-FB(%)</td>
-      <td>PFL-MF(%)</td>
-      <td>PFL-MFE(%)</td>
+
    </tr>
-   <tr>
-      <td rowspan="3">Fashion-MNIST & LeNet5</td><!--rowspan="3"纵向合并三个单元格-->
-      <td>0.5</td>
-      <td>84.87</td>
-      <td>90</td>
-      <td>92.84</td>
-      <td>92.85</td>
-      <td style="font-weight:bold">92.89</td>
-   </tr>
+
    <tr>
       <td>0.9</td>
       <td>82.23</td>
       <td>90.31</td>
       <td>91.84</td>
       <td style="font-weight:bold">92.02</td>
-      <td>92.01</td>
+
    </tr>
    <tr>
       <td>2</td>
